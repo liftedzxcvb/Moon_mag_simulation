@@ -6,9 +6,14 @@
 %}
 
 
+% Can check the link state for each time slot with DLstate and ULstate
+
+
 strongch = load('newstrongch.mat');
 weakch = load('newweakch.mat');
 
+
+% choose the channel by 'strongch.newstrongch' or 'weakch.newweakch'
 ch = strongch.newstrongch;
 
 T = 18000; % Total time
@@ -20,7 +25,7 @@ fader = ones(T,1);
 weather = 1.2;
 %fader(12001:15000) = 1;
 
-
+% generation of the random channels for each link
 ch_B_up = ch.data_alp(seed1+1:seed1+T,1).*ch.data_bet(seed1+1:seed1+T,1).*fader.*weather;
 ch_B_down = ch.data_alp(seed1+1:seed1+T,2).*ch.data_bet(seed1+1:seed1+T,2).*fader.*weather;
 ch_C_up = ch.data_alp(seed2+1:seed2+T,1).*ch.data_bet(seed2+1:seed2+T,1).*fader.*weather;
